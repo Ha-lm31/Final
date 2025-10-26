@@ -2,7 +2,7 @@ import os
 from detect import detect
 
 # 📁 Chemins principaux
-BASE_DIR = r"C:\Users\ot\Desktop\ATST\Module1"
+BASE_DIR = r"/workspaces/Final/Module1"
 MODEL_DIR = os.path.join(BASE_DIR, "models")
 DATASET_DIR = os.path.join(BASE_DIR, "dataset")
 RESULT_DIR = os.path.join(BASE_DIR, "result")

@@ -3,7 +3,7 @@ import shutil
 from ultralytics import YOLO
 
 # 📁 Chemin complet du dossier 'models' (modifie-le si besoin)
-models_dir = r"C:\Users\ot\Desktop\ATST\Module1\models"
+models_dir = r"/workspaces/Final/Module1/models"
 
 # Vérifie si le dossier existe avant de commencer
 if not os.path.exists(models_dir):

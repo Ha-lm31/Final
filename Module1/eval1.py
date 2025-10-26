@@ -2,7 +2,7 @@ import os
 import json
 
 # 📁 Dossier contenant les résultats
-RESULT_DIR = r"C:\Users\ot\Desktop\ATST\Module1\result"
+RESULT_DIR = r"/workspaces/Final/Module1/result"
 
 # Vérification du dossier
 if not os.path.exists(RESULT_DIR):
