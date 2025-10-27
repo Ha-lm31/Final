@@ -1,22 +1,27 @@
-# Module Véhicle détection
+# Système Intelligent de Gestion du Trafic
+Intelligent Traffic Management System
 
-## models.py
-D'abord on exécuter le fichier `models.py` pour télécharger les modèles YOLO à utiliser.
-Pour eviter tous problème : 
+- CMD
 ```
 sudo apt-get update -y 
 sudo apt-get install -y libgl1
-python models.py
-```
-## main.py
-
-## eval1.py
-
-
-```
 python models.py
 python main.py
 python eval1.py
 python standard.py
 python GST.py
+cd Module1
+cd ..
 ```
+
+
+## Module de détection de véhicule
+Vehicle Detection Module
+
+## Module de commutation de signal
+Signal Switching Module 
+
+
+## Module de simulation
+Simulation Module 
+
