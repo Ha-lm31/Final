@@ -1,8 +1,11 @@
 # Système Intelligent de Gestion du Trafic
 Intelligent Traffic Management System
 
+[`Github Repo Link`](https://github.com/mihir-m-gandhi/Adaptive-Traffic-Signal-Timer)
+
 - CMD
 ```
+python --version
 sudo apt-get update -y 
 sudo apt-get install -y libgl1
 python models.py
