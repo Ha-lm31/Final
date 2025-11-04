@@ -1,4 +1,4 @@
-simTime = 30
+simTime = 300
 # LAG
 # NO. OF VEHICLES IN SIGNAL CLASS
 # stops not used
@@ -17,18 +17,27 @@ import sys
 import os
 import csv
 import datetime
-def save_traffic_data(case, sim_time, vehicles_passed):
-    file_exists = os.path.isfile('traffic_data.csv')
-    with open('traffic_data.csv', mode='a', newline='') as file:
+def save_traffic_data(case, sim_time, lane_counts):
+    """
+    Enregistre les résultats de simulation dans sim-resultas.csv
+    Format : date, case, sim-time, lane1, lane2, lane3, lane4, total
+    """
+    file_exists = os.path.isfile('sim-resultas.csv')
+    with open('sim-resultas.csv', mode='a', newline='') as file:
         writer = csv.writer(file)
         if not file_exists:
-            writer.writerow(['date', 'case', 'sim_time', 'vehicles_passed'])
+            writer.writerow(['date', 'case', 'sim-time', 'lane1', 'lane2', 'lane3', 'lane4', 'total'])
         writer.writerow([
-            datetime.datetime.now().isoformat(),
+            datetime.datetime.now().strftime("%d-%m-%Y"),
             case,
             sim_time,
-            vehicles_passed
+            lane_counts[0],
+            lane_counts[1],
+            lane_counts[2],
+            lane_counts[3],
+            sum(lane_counts)
         ])
+
 
 # options={
 #    'model':'./cfg/yolo.cfg',     #specifying the path of model
@@ -293,49 +302,8 @@ def initialize():
 
 # Set time according to formula
 def setTime():
-    global noOfCars, noOfBikes, noOfBuses, noOfTrucks, noOfRickshaws, noOfLanes
-    global carTime, busTime, truckTime, rickshawTime, bikeTime
-    os.system("say detecting vehicles, "+directionNumbers[(currentGreen+1)%noOfSignals])
-#    detection_result=detection(currentGreen,tfnet)
-#    greenTime = math.ceil(((noOfCars*carTime) + (noOfRickshaws*rickshawTime) + (noOfBuses*busTime) + (noOfBikes*bikeTime))/(noOfLanes+1))
-#    if(greenTime<defaultMinimum):
-#       greenTime = defaultMinimum
-#    elif(greenTime>defaultMaximum):
-#       greenTime = defaultMaximum
-    # greenTime = len(vehicles[currentGreen][0])+len(vehicles[currentGreen][1])+len(vehicles[currentGreen][2])
-    # noOfVehicles = len(vehicles[directionNumbers[nextGreen]][1])+len(vehicles[directionNumbers[nextGreen]][2])-vehicles[directionNumbers[nextGreen]]['crossed']
-    # print("no. of vehicles = ",noOfVehicles)
-    noOfCars, noOfBuses, noOfTrucks, noOfRickshaws, noOfBikes = 0,0,0,0,0
-    for j in range(len(vehicles[directionNumbers[nextGreen]][0])):
-        vehicle = vehicles[directionNumbers[nextGreen]][0][j]
-        if(vehicle.crossed==0):
-            vclass = vehicle.vehicleClass
-            # print(vclass)
-            noOfBikes += 1
-    for i in range(1,3):
-        for j in range(len(vehicles[directionNumbers[nextGreen]][i])):
-            vehicle = vehicles[directionNumbers[nextGreen]][i][j]
-            if(vehicle.crossed==0):
-                vclass = vehicle.vehicleClass
-                # print(vclass)
-                if(vclass=='car'):
-                    noOfCars += 1
-                elif(vclass=='bus'):
-                    noOfBuses += 1
-                elif(vclass=='truck'):
-                    noOfTrucks += 1
-                elif(vclass=='rickshaw'):
-                    noOfRickshaws += 1
-    # print(noOfCars)
-    greenTime = math.ceil(((noOfCars*carTime) + (noOfRickshaws*rickshawTime) + (noOfBuses*busTime) + (noOfTrucks*truckTime)+ (noOfBikes*bikeTime))/(noOfLanes+1))
-    # greenTime = math.ceil((noOfVehicles)/noOfLanes) 
-    print('Green Time: ',greenTime)
-    if(greenTime<defaultMinimum):
-        greenTime = defaultMinimum
-    elif(greenTime>defaultMaximum):
-        greenTime = defaultMaximum
-    # greenTime = random.randint(15,50)
-    signals[(currentGreen+1)%(noOfSignals)].green = greenTime
+    # Utiliser la valeur standard de feu vert
+    signals[(currentGreen + 1) % noOfSignals].green = defaultGreen
    
 def repeat():
     global currentGreen, currentYellow, nextGreen
@@ -438,10 +406,16 @@ def simulationTime():
             print('Total vehicles passed: ',totalVehicles)
             print('Total time passed: ',timeElapsed)
             print('No. of vehicles passed per unit time: ',(float(totalVehicles)/float(timeElapsed)))
+            lane_counts = [
+            vehicles[directionNumbers[0]]['crossed'],
+            vehicles[directionNumbers[1]]['crossed'],
+            vehicles[directionNumbers[2]]['crossed'],
+            vehicles[directionNumbers[3]]['crossed']
+            ]
             save_traffic_data(
-            'simulation',
-            simTime,
-            totalVehicles
+                'TST1',  # nom du scénario
+                simTime,
+                lane_counts
             )
             os._exit(1)
     

@@ -333,7 +333,7 @@ def setTime():
                 elif(vclass == 'rickshaw'):
                     noOfRickshaws += 1
     # print(noOfCars)
-    greenTime = math.ceil(((noOfCars * carTime) + (noOfRickshaws * rickshawTime) + (noOfBuses * busTime) + (noOfTrucks * truckTime)+ (noOfBikes * bikeTime))/(noOfLanes + 1))
+    greenTime = math.ceil(((noOfCars * carTime) + (noOfRickshaws * rickshawTime) + (noOfBuses * busTime) + (noOfTrucks * truckTime)+ (noOfBikes * bikeTime))/noOfLanes)
     # greenTime = math.ceil((noOfVehicles)/noOfLanes)
     print('Green Time: ',greenTime)
     if(greenTime < defaultMinimum):
@@ -439,7 +439,7 @@ def simulationTime():
             vehicles[directionNumbers[3]]['crossed']
             ]
             save_traffic_data(
-                'GST1',  # nom du scénario
+                'GST2',  # nom du scénario
                 simTime,
                 lane_counts
             )

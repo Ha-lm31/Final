@@ -14,19 +14,28 @@ import sys
 import os
 import csv
 import datetime
-def save_traffic_data(case, sim_time, vehicles_passed):
-    file_exists = os.path.isfile('traffic_data.csv')
-    with open('traffic_data.csv', mode='a', newline='') as file:
+def save_traffic_data(case, sim_time, lane_counts):
+    """
+    Enregistre les résultats de simulation dans sim-resultas.csv
+    Format : date, case, sim-time, lane1, lane2, lane3, lane4, total
+    """
+    file_exists = os.path.isfile('sim-resultas.csv')
+    with open('sim-resultas.csv', mode='a', newline='') as file:
         writer = csv.writer(file)
         if not file_exists:
-            writer.writerow(['date', 'case', 'sim_time', 'vehicles_passed'])
+            writer.writerow(['date', 'case', 'sim-time', 'lane1', 'lane2', 'lane3', 'lane4', 'total'])
         writer.writerow([
-            datetime.datetime.now().isoformat(),
+            datetime.datetime.now().strftime("%d-%m-%Y"),
             case,
             sim_time,
-            vehicles_passed
+            lane_counts[0],
+            lane_counts[1],
+            lane_counts[2],
+            lane_counts[3],
+            sum(lane_counts)
         ])
-simTime = 100
+
+simTime = 300
 defaultYellow = 5
 defaultGreen = 20
 defaultRed1 = (defaultGreen + defaultYellow)
@@ -389,10 +398,16 @@ def simulationTime():
             print('Total vehicles passed: ',totalVehicles)
             print('Total time passed: ',timeElapsed)
             print('No. of vehicles passed per unit time: ',(float(totalVehicles)/float(timeElapsed)))
+            lane_counts = [
+            vehicles[directionNumbers[0]]['crossed'],
+            vehicles[directionNumbers[1]]['crossed'],
+            vehicles[directionNumbers[2]]['crossed'],
+            vehicles[directionNumbers[3]]['crossed']
+            ]
             save_traffic_data(
-            'standard',
+            'RST1',  # nom du scénario
             simTime,
-            totalVehicles
+            lane_counts
             )
             os._exit(1)
 class Main:
