@@ -1,7 +1,7 @@
 # Système Intelligent de Gestion du Trafic
 Intelligent Traffic Management System
 
-[`Github Repo Link`](https://github.com/mihir-m-gandhi/Adaptive-Traffic-Signal-Timer)
+[`Github Repo Link of Proposed System`](https://github.com/mihir-m-gandhi/Adaptive-Traffic-Signal-Timer)
 
 - CMD
 ```
@@ -26,16 +26,21 @@ git push -u origin main \ git push -u origin main --force
 
 ```
 
+## Developped System
 
-## Module de détection de véhicule
-Vehicle Detection Module
+### Module de détection de véhicule
+`Vehicle Detection Module`
 
-## Module de commutation de signal
-Signal Switching Module 
+En ce module, on a importer un base de données from roboflow contient 100 images, et on traite le la détection par les modèles récents existes.
+Aprés en e
 
 
-## Module de simulation
-Simulation Module 
+### Module de commutation de signal
+`Signal Switching Module` 
+
+
+### Module de simulation
+`Simulation Module` 
 - ATST.py : code du indian
     - TST.py : code indian fix
 - GST1.py : mon code avec greenTime + redTime
