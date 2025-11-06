@@ -30,22 +30,23 @@ git push -u origin main \ git push -u origin main --force
 
 ### Module de détection de véhicule
 `Vehicle Detection Module`
+Module1: 
 
-En ce module, on a importer un base de données from roboflow contient 100 images, et on traite le la détection par les modèles récents existes.
-Aprés en e
-
+En ce module, on prend un ensemble de données depuis Roboflow, on applique sur elle quelque modèle de YOLO récent pour détecter les types et nombres de véhicules dans un images, à conditions que on cont que les véhicules qui viens vers la CCTV.
+Après, on compare les résultats pour aqquir le meillieur modèl.
 
 ### Module de commutation de signal
 `Signal Switching Module` 
 
+En a utiliser le meme principe.
 
 ### Module de simulation
-`Simulation Module` 
-- ATST.py : code du indian
-    - TST.py : code indian fix
-- GST1.py : mon code avec greenTime + redTime
-- GST2.py : formule greenTime sans (+1)
-- RST1.py : mon code sans greenTime et avec redTime
+`Simulation Module`
 
-A faire : 
-- essayer d'exécuter les code 15 fois pour chaque model
+On a faire 5 cas : 
+
+- Cas 1: ATST1.py
+- Cas 2: TST1.py
+- Cas 3: GST1.py
+- Cas 4: GST2.py
+- Cas 5: RST1.py

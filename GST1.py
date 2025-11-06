@@ -1,3 +1,5 @@
+simTime = 300
+
 import random
 import math
 import time
@@ -29,7 +31,6 @@ def save_traffic_data(case, sim_time, lane_counts):
             sum(lane_counts)
         ])
 
-simTime = 300
 defaultYellow = 5
 defaultGreen = 20
 defaultRed1 = (defaultGreen + defaultYellow)
