@@ -2,7 +2,7 @@
 Intelligent Traffic Management System
 
 [`Github Repo Link of Proposed System`](https://github.com/mihir-m-gandhi/Adaptive-Traffic-Signal-Timer)
-
+[`Github Repo Link of Module1`](https://github.com/Ha-lm31/VehicleDetection.git)
 - CMD
 ```
 python --version
@@ -21,8 +21,9 @@ cd ..
 
 git status
 git add .
-git commit -m "1st commit"
-git push -u origin main \ git push -u origin main --force
+git commit -m "8tt commit"
+git push -u origin main --force
+git push -u origin main \ 
 
 ```
 
@@ -45,8 +46,9 @@ En a utiliser le meme principe.
 
 On a faire 5 cas : 
 
-- Cas 1: ATST1.py
-- Cas 2: TST1.py
-- Cas 3: GST1.py
-- Cas 4: GST2.py
-- Cas 5: RST1.py
+ATST : defaultRed, defaultGreen, defaultYellow, defaultMinimum, defaultMaximum, setTime(greenTime)
+ATST : defaultRed, defaultGreen, defaultYellow, defaultMinimum, defaultMaximum, setTime(defaultGreen)
+
+GST1 : defaultRed,defaultRed1, defaultRed2, defaultGreen, defaultYellow, defaultMinimum, defaultMaximum, setTime(greenTime)
+GST2 : defaultRed, defaultRed1, defaultRed2, defaultGreen, defaultYellow, defaultMinimum, defaultMaximum, setTime(greenTime -1), 
+RST : defaultRed, defaultGreen, defaultYellow, defaultMinimum, defaultMaximum, setTime(defaultGreen)
